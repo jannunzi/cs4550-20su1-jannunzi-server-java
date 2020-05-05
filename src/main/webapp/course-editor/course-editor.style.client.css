@@ -1,0 +1,6 @@
+/*h2 {color: green}*/
+h2#lessons {color: yellow; background-color: red}
+.background-green {
+    background-color: green;
+    color: yellow;
+}
