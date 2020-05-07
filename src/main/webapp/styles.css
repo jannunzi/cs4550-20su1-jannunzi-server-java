@@ -2,3 +2,23 @@ h2 {
     background-color: blue;
     color: white;
 }
+
+.btn-danger {
+    color: #fff;
+    background-color: #cc7777;
+    border-color: #dc3545;
+}
+
+.btn {
+    border-radius: 4rem;
+}
+
+body {
+    padding-top: 65px;
+}
+
+.wbdv-bottom-right-10px {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
