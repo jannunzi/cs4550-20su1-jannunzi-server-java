@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          rel="stylesheet"/>
+
+    <link href="../styles.css" rel="stylesheet"/>
+
+    <link href="profile.style.client.css" rel="stylesheet"/>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Profile</h1>
+        <div>
+
+            <div class="form-group row">
+
+                <label class="col-lg-2 col-sm-6 col-form-label"
+                       for="username">Username</label>
+                <div class="col-lg-10 col-sm-6">
+
+                    <input  id="username"
+                            class="form-control"
+                            value="Alice"
+                            type="text"
+                            placeholder="joe123"
+                            title="Use this username to login"/>
+                </div>
+            </div>
+        Password
+        <input type="password"/>
+        <br/>
+
+        Date of birth
+        <input type="date" value="2020-05-04">
+        <br/>
+
+        Favorite movie
+        <select>
+            <option value="AVATAR2">Avatar - 2nd highest grossing movie</option>
+            <option selected value="T2">Terminator 2</option>
+            <option value="ALIENS2">Aliens 2</option>
+            <option value="TITANIC">Titanic</option>
+        </select>
+        <br/>
+
+        Marital Status
+        <label>
+            <input type="radio" name="MSTATUS"/>Married
+        </label>
+        <label>
+            <input type="radio" name="MSTATUS"/>Single
+        </label>
+        <input type="radio" name="MSTATUS"/>Divorced
+
+        <br/>
+
+        Favorite color
+        <label>
+            <input type="radio" name="FCOLOR"/>Red
+            <input type="radio" name="FCOLOR"/>Green
+        </label>
+        <label>
+            <input type="radio" name="FCOLOR"/>Yellow
+        </label>
+        <label>
+            <input type="radio" name="FCOLOR"/>Blue
+        </label>
+
+        <br/>
+
+
+        Favorite movie genres
+        <label>
+            <input type="checkbox" value="HORROR" name="FGENRE"/>Horror
+            <input type="checkbox" value="COMEDY" name="FGENRE"/>Comedy
+        </label>
+        <label>
+            <input type="checkbox" value="DRAMA" name="FGENRE"/>Drama
+        </label>
+        <label>
+            <input type="checkbox" value="SCIFI" name="FGENRE"/>SciFi
+        </label>
+
+        <br/>
+
+        </div>
+
+
+        <a href="/index.html">
+            Logout
+        </a>
+
+
+    </div>
+</body>
+</html>
