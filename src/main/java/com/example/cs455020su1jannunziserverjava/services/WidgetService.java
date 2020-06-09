@@ -38,4 +38,32 @@ public class WidgetService {
     public List<Widget> findAllWidgets() {
         return widgets;
     }
+
+    public List<Widget> deleteWidget(Integer wid) {
+        List<Widget> result = new ArrayList<Widget>();
+        for (Widget w: widgets) {
+            if(!w.getId().equals(wid)) {
+                result.add(w);
+            }
+        }
+        this.widgets = result;
+        return result;
+    }
+
+    public Widget createWidget(Widget newWidget) {
+        newWidget.setId(widgets.size() * 20);
+        this.widgets.add(newWidget);
+        return newWidget;
+    }
+
+    public Widget updateWidget(Integer widgetId, Widget updatedWidget) {
+        for(int i=0; i<widgets.size(); i++) {
+            if(widgets.get(i).getId().equals(widgetId)) {
+                updatedWidget.setId(widgetId);
+                widgets.set(i, updatedWidget);
+                return updatedWidget;
+            }
+        }
+        return null;
+    }
 }
