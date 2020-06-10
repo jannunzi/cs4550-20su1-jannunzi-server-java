@@ -61,7 +61,6 @@ public class WidgetController {
         return widgetService.deleteWidget(wid);
     }
 
-
     @GetMapping("/api/topics/{topicId}/widgets")
     public List<Widget> findWidgetsForTopic(
             @PathVariable("topicId") String tid) {
