@@ -40,7 +40,6 @@ public class WidgetController {
     public Widget createWidget(
             @PathVariable("tid") String topicId,
             @RequestBody Widget newWidget) {
-        newWidget.setTopicId(topicId);
         return widgetService.createWidget(newWidget);
     }
 

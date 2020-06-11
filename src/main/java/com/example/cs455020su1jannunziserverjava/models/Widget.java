@@ -1,5 +1,7 @@
 package com.example.cs455020su1jannunziserverjava.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,7 +12,18 @@ public class Widget {
     private Integer id;
     private String name;
     private String type;
-    private String topicId;
+
+    @ManyToOne
+    @JsonIgnore
+    private Topic topic;
+
+    public Topic getTopic() {
+        return topic;
+    }
+
+    public void setTopic(Topic topic) {
+        this.topic = topic;
+    }
 
     public Widget() {
     }
@@ -19,21 +32,6 @@ public class Widget {
         this.id = id;
         this.name = name;
         this.type = type;
-    }
-
-    public Widget(Integer id, String name, String type, String topicId) {
-        this.id = id;
-        this.name = name;
-        this.type = type;
-        this.topicId = topicId;
-    }
-
-    public String getTopicId() {
-        return topicId;
-    }
-
-    public void setTopicId(String topicId) {
-        this.topicId = topicId;
     }
 
     public Integer getId() {
