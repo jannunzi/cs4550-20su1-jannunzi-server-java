@@ -1,6 +1,8 @@
 package com.example.cs455020su1jannunziserverjava.services;
 
+import com.example.cs455020su1jannunziserverjava.models.Topic;
 import com.example.cs455020su1jannunziserverjava.models.Widget;
+import com.example.cs455020su1jannunziserverjava.repositories.TopicRepository;
 import com.example.cs455020su1jannunziserverjava.repositories.WidgetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +12,9 @@ import java.util.List;
 
 @Service
 public class WidgetService {
+
+    @Autowired
+    TopicRepository topicRepository;
 
     @Autowired
     WidgetRepository repository;
@@ -22,8 +27,9 @@ public class WidgetService {
         widgets.add(new Widget(432, "Widget 4", "IMAGE"));
         widgets.add(new Widget(567, "Widget 5", "PARAGRAPH"));
     }
-    public List<Widget> findWidgetsForTopic(String tid) {
-        return (List<Widget>)repository.findAll();
+    public List<Widget> findWidgetsForTopic(Integer tid) {
+        return repository.findWidgetsForTopic(tid);
+//        return (List<Widget>)repository.findAll();
 //        List<Widget> result = new ArrayList<Widget>();
 //
 //        for (Widget w: widgets) {
@@ -48,30 +54,40 @@ public class WidgetService {
     }
 
     public List<Widget> deleteWidget(Integer wid) {
+        repository.deleteById(wid);
         List<Widget> result = new ArrayList<Widget>();
-        for (Widget w: widgets) {
-            if(!w.getId().equals(wid)) {
-                result.add(w);
-            }
-        }
-        this.widgets = result;
         return result;
+//        List<Widget> result = new ArrayList<Widget>();
+//        for (Widget w: widgets) {
+//            if(!w.getId().equals(wid)) {
+//                result.add(w);
+//            }
+//        }
+//        this.widgets = result;
+//        return result;
     }
 
-    public Widget createWidget(Widget newWidget) {
-        newWidget.setId(widgets.size() * 20);
-        this.widgets.add(newWidget);
-        return newWidget;
+    public Widget createWidget(Integer tid, Widget newWidget) {
+        Topic topic = topicRepository.findTopicById(tid);
+        newWidget.setTopic(topic);
+        return repository.save(newWidget);
+//        newWidget.setId(widgets.size() * 20);
+//        this.widgets.add(newWidget);
+//        return newWidget;
     }
 
     public Widget updateWidget(Integer widgetId, Widget updatedWidget) {
-        for(int i=0; i<widgets.size(); i++) {
-            if(widgets.get(i).getId().equals(widgetId)) {
-                updatedWidget.setId(widgetId);
-                widgets.set(i, updatedWidget);
-                return updatedWidget;
-            }
-        }
-        return null;
+        Widget widget = repository.findWidgetById(widgetId);
+        widget.setType(updatedWidget.getType());
+        repository.save(widget);
+        return widget;
+//        for(int i=0; i<widgets.size(); i++) {
+//            if(widgets.get(i).getId().equals(widgetId)) {
+//                updatedWidget.setId(widgetId);
+//                widgets.set(i, updatedWidget);
+//                return updatedWidget;
+//            }
+//        }
+//        return null;
     }
 }

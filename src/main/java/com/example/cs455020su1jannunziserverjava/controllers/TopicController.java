@@ -18,10 +18,12 @@ public class TopicController {
     public void createTopic() {}
     public void deleteTopic() {}
     public void updateTopic() {}
+
     @GetMapping("/api/topics")
     public List<Topic> findAllTopics() {
         return service.findAllTopics();
     }
+
     @GetMapping("/api/topics/{topicId}")
     public Topic findTopicById(
             @PathVariable("topicId") Integer tid) {

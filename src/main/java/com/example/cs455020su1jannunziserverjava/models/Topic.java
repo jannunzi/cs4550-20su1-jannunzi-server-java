@@ -10,7 +10,7 @@ public class Topic {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String title;
-    private String lesson;
+    private String lesson; // stores the _id of the lesson instance in generic server
 
     @OneToMany(mappedBy = "topic")
     private List<Widget> widgets;
