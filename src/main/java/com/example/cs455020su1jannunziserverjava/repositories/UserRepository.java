@@ -15,4 +15,8 @@ public interface UserRepository
     User findUserByCredentials(
             @Param("username") String username,
             @Param("password") String password);
+
+    @Query("SELECT user FROM User user WHERE user.username=:u")
+    public User findUserByUsername(
+            @Param("u") String username);
 }

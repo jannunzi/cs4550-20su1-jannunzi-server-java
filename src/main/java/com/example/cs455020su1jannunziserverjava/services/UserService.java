@@ -19,4 +19,8 @@ public class UserService {
     public User findUserByCredentials(String username, String password) {
         return repository.findUserByCredentials(username, password);
     }
+
+    public User findUserByUsername(String username) {
+        return repository.findUserByUsername(username);
+    }
 }

@@ -22,8 +22,18 @@ public class UserController {
     public User register(
             @RequestBody User user,
             HttpSession session) {
-        User currentUser = service.createUser(user);
-        session.setAttribute("currentUser", currentUser);
+        User existingUser = service.findUserByUsername(user.getUsername());
+        if(existingUser == null) {
+            User currentUser = service.createUser(user);
+            session.setAttribute("currentUser", currentUser);
+            return currentUser;
+        }
+        return null;
+    }
+
+    @PostMapping("/api/profile")
+    public User profile(HttpSession session) {
+        User currentUser = (User)session.getAttribute("currentUser");
         return currentUser;
     }
 
@@ -33,12 +43,6 @@ public class UserController {
             HttpSession session) {
         User currentUser = service.findUserByCredentials(user.getUsername(), user.getPassword());
         session.setAttribute("currentUser", currentUser);
-        return currentUser;
-    }
-
-    @PostMapping("/api/profile")
-    public User profile(HttpSession session) {
-        User currentUser = (User)session.getAttribute("currentUser");
         return currentUser;
     }
 
